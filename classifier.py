@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from datetime import date, datetime
+import sklearn
 
 YEAR = 1992
 COLS_NEEDED = [
@@ -20,10 +21,6 @@ COLS_NEEDED = [
     "STATE",
     "COUNTY"
 ]
-
-label_names = [chr(ord('A') + i) for i in range(ord('G') - ord('A') + 1)]
-labels = range(len(label_names))
-feature_names = ['duration', 'state', 'season', 'cause']
 
 with open('./wildfires_%d.csv' % YEAR) as csvfile:
     df = pd.read_csv(csvfile)
@@ -53,6 +50,7 @@ def difference_in_seconds():
     return pd.to_datetime(end_times) - pd.to_datetime(start_times)
 
 def num_to_time(num_time):
+    # num_time is in 24-hour format - so 0 to 2359
     chars = list(str(int(num_time)))
     res = []
     for i in range(len(chars)-1, -1, -1):
@@ -75,4 +73,13 @@ full_disc_date = pd.to_datetime(df['DISCOVERY_DATE'].dt.strftime("%Y-%m-%d") + '
 full_cont_date = pd.to_datetime(df['CONT_DATE'].dt.strftime("%Y-%m-%d") + ' ' + df['CONT_TIME'])
 df['duration'] = full_cont_date - full_disc_date
 
-print(df['duration'])
+# TODO: Create classifier
+# - extract features for each row
+# - create labels for each row (this should just be getting the fire class size and mapping it to an integer)
+# - split data into train + test sets (shuffle data first?)
+# - train data using a model (need to look this up)
+# - test for accuracy
+label_names = [chr(ord('A') + i) for i in range(ord('G') - ord('A') + 1)]
+labels = df['FIRE_SIZE_CLASS']
+
+feature_names = ['duration', 'state', 'season', 'cause']
