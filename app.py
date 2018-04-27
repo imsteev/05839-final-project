@@ -5,7 +5,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 @app.route('/')
 def homepage():
-    return "Hello, 05839 Final Project"
+    return render_template("index.html",title='05839 Final Project')
 
 @app.errorhandler(404)
 def page_not_found(e):
