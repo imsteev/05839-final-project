@@ -26,12 +26,11 @@ class WildfireClassifier(object):
     SEASONS = ['winter','spring','summer','autumn']
     STAT_CAUSE_CODES = list(range(1,14))
     
-    def __init__(self, fname, year):
+    def __init__(self, fname, year, cleaned=False):
         self.cleaned = False
         self.year = year
         with open(fname) as csvfile:
             self.df = pd.read_csv(csvfile)
-            self.df = self.df[WildfireClassifier.COLS]
             
     def get_season(self, day, Y):
         seasons = [('winter', (date(Y,  1,  1),  date(Y,  3, 20))),
@@ -71,6 +70,7 @@ class WildfireClassifier(object):
     
     def clean(self):
         if self.cleaned: return
+        self.df = self.df[WildfireClassifier.COLS]
         self.df = self.df.dropna(subset=WildfireClassifier.COLS)
         self.df['CONT_TIME'] = self.df.apply(lambda row: self.num_to_time(row.CONT_TIME), axis=1)
         self.df['DISCOVERY_TIME'] = self.df.apply(lambda row: self.num_to_time(row.DISCOVERY_TIME), axis=1)

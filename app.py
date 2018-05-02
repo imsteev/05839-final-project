@@ -8,7 +8,7 @@ app = Flask(__name__, static_url_path='/static')
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 s3 = boto3.resource('s3')
 BUCKET_NAME = 'spchung-kediz-final-project'
-KEY = "wildfires_%d.csv"
+KEY = "trimmed_wildfires_%d.csv"
 classifiers = {}
 
 @app.route('/')
@@ -20,6 +20,7 @@ def classify_fire_size(year):
     try:
         year = int(year)
         if year in classifiers:
+            
             clf = classifiers[year]
             test_value = clf.test(.7)
         else:
@@ -28,13 +29,14 @@ def classify_fire_size(year):
             if not (valid_year_start <= year <= valid_year_end): return url_for('homepage')
             fname = './%s' % (KEY % year)
             if not os.path.isfile(fname):
+                print("downloaded")
                 s3.Bucket(BUCKET_NAME).download_file(KEY % year, KEY % year)
-            clf = WildfireClassifier(fname,year)
-            clf.clean()
+            clf = WildfireClassifier(fname,year,cleaned=True)
             classifiers[year] = clf
             test_value = clf.test(0.7)
-        return render_template("index.html", title="Test results: %f" % test_value)
-    except:
+        return render_template("index.html", year=year, test_results=test_value)
+    except Exception as e:
+        print("couldn't load", e)
         return url_for('homepage')
 
 @app.errorhandler(404)
