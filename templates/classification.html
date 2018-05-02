@@ -1,3 +1,51 @@
+{% extends 'base.html' %} {% block main_content %}
 <div>
-  <span>Test results for {{ year }}: {{ test_results }}</span>
+  <h2>Overview</h2>
+  <p>
+    For the advanced portion of our project, we wanted to create a predictive model that represented the wildfire data. More
+    specifically, we wanted to see how well we could classify fire size given a set of features. Because the datasets are
+    so large, supervised learning was the way to go - the dataset already provided the labels (
+    <code>FIRE_SIZE_CLASS</code>). The heavy lifting required lied in cleaning the data, extracting features, and splitting the dataset into appropriate
+    chunks.
+  </p>
 </div>
+<div>
+  <h2>
+    Cleaning
+  </h2>
+  <p>
+    There were a lot of columns that were extraneous for the purposes of classification, so the only columns we used were
+    <code>DISCOVERY_DATE, DISCOVERY_DOY, DISCOVERY_TIME, STAT_CAUSE_CODE, CONT_DATE, CONT_TIME, FIRE_SIZE_CLASS, and STATE</code>. Rows that had any of these columns missing were removed from the training/testing sets because we wanted to execute
+    on as complete data as possible. Doing this removed further skewing, as we would have had to impute missing data, which
+    doesn't really make sense without deeper knowledge about wildfires in the U.S. Finally, classification was performed
+    on the dataset separated by year.
+  </p>
+</div>
+<div>
+  <h2>
+    Features
+  </h2>
+  <p>
+    <code>STAT_CAUSE_CODE, season, region, duration</code>
+  </p>
+  <p>
+    There was a bit of experimentation with different features before settling on the above set. The reason for using fire cause
+    is fairly self-explanatory. With season, we figured that there might be more fires and perhaps bigger fires during the
+    summer due to dryness in certain areas like California. Region was chosen because different regions have different environments,
+    resulting in
+  </p>
+</div>
+<div>
+  <h2>
+    Preparing for classification
+  </h2>
+  <p>
+
+  </p>
+</div>
+<div>
+  <h2>Evaluation</h2>
+  <p></p>
+</div>
+<span>Test results for {{ year }}: {{ test_results }}</span>
+{% endblock %}

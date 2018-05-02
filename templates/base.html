@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+
+{% include 'head.html' %}
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<header id="header">
+		<a class="logo" href="{{ url_for('homepage') }}">Home</a>
+		<nav>
+			<a href="#menu">Menu</a>
+		</nav>
+	</header>
+
+	<!-- Nav -->
+	{% include 'nav.html' %}
+
+	<!-- Heading -->
+	<div id="heading">
+		<h1>{{ title }}</h1>
+		{% block heading %} {% endblock %}
+	</div>
+
+	<!-- Main -->
+	<section id="main" class="wrapper">
+		<div class="inner">
+			<div class="content">
+				{% block main_content %} {% endblock %}
+			</div>
+		</div>
+	</section>
+
+	{% include 'footer.html' %}
+
+	<script src="/static/templated-industrious/js/jquery.min.js"></script>
+	<script src="/static/templated-industrious/js/browser.min.js"></script>
+	<script src="/static/templated-industrious/js/breakpoints.min.js"></script>
+	<script src="/static/templated-industrious/js/util.js"></script>
+	<script src="/static/templated-industrious/js/main.js"></script>
+
+</body>
+
+</html>

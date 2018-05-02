@@ -1,81 +1,8 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
-  <script type="text/javascript" src="https://d3js.org/d3.v2.js"></script>
-  <link rel="stylesheet" href="/static/css/style.css">
-</head>
-
-<body>
-  <div class="container">
-    <div class="jumbotron">
-      <h1>Wildfire Analysis</h1>
-      <h4>05839 Final Project</h4>
-      <h4>Stephen Chung, Kedi Zhang</h4>
-    </div>
-    <ul class="nav nav-tabs justify-content-center" role='tablist'>
-      <li class="nav-item">
-        <a class="nav-link active" href="#about" data-toggle='tab'>About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#data" data-toggle='tab'>Data</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#visualization" data-toggle='tab'>Visualization</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#classification" data-toggle='tab'>Classification</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#conclusion" data-toggle='tab'>Conclusion</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#references" data-toggle="tab">References</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://github.com/imsteev/05839-final-project" target="_blank">Source Code</a>
-      </li>
-    </ul>
-    <div class='tab-content'>
-      <div class='tab-pane active show' id='about' role='tabpanel'>
-        {% include 'about.html' %}
-      </div>
-      <div class='tab-pane' id='data' role='tabpanel'>
-        {% include 'data.html' %}
-      </div>
-      <div class='tab-pane' id='visualization' role='tabpanel'>
-        {% include 'visualization.html' %}
-      </div>
-      <div class="tab-pane" id="classification" role='tabpanel'>
-        {% include 'classification.html' %}
-      </div>
-      <div class='tab-pane' id='conclusion' role='tabpanel'>
-        {% include 'conclusion.html' %}
-      </div>
-      <div class='tab-pane' id='references' role='tabpanel'>
-        <ul>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-</body>
-
-</html>
+{% extends 'base.html' %} {% block main_content %}
+<div class='tableau'>
+  {% include 'firesize_and_season.html' %}
+</div>
+<div class='streamgraph'>
+  {% include 'streamgraph.html' %}
+</div>
+{% endblock %}

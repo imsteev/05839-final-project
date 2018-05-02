@@ -13,7 +13,19 @@ classifiers = {}
 
 @app.route('/')
 def homepage():
-    return render_template("index.html",title="05839")
+    return render_template("index.html", title="05839 Final Project")
+
+@app.route('/about')
+def about():
+    return render_template("about.html", title="About")
+
+@app.route('/data')
+def data():
+    return render_template("data.html", title="Data")
+
+@app.route('/classification')
+def classification():
+    return render_template("classification.html", title="Classification")
 
 @app.route('/classify/<year>')
 def classify_fire_size(year):
