@@ -1,18 +1,41 @@
 from flask import Flask, render_template, url_for, request, redirect, Markup
 import boto3
+import os
+import sys
+from wildfires.wildfire_classifier import WildfireClassifier
 
 app = Flask(__name__, static_url_path='/static')
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 s3 = boto3.resource('s3')
 BUCKET_NAME = 'spchung-kediz-final-project'
-KEY = "wildfires_1992.csv"
+KEY = "wildfires_%d.csv"
+classifiers = {}
 
 @app.route('/')
 def homepage():
-    # print(s3.Object(BUCKET_NAME, KEY).get())
-    # s3.Bucket(BUCKET_NAME).download_file(KEY, KEY)
-    s3.Bucket(BUCKET_NAME).download_file(KEY, KEY)
     return render_template("index.html",title="05839")
+
+@app.route('/classify/<year>')
+def classify_fire_size(year):
+    try:
+        year = int(year)
+        if year in classifiers:
+            clf = classifiers[year]
+            test_value = clf.test(.7)
+        else:
+            valid_year_start = 1992
+            valid_year_end = 2015
+            if not (valid_year_start <= year <= valid_year_end): return url_for('homepage')
+            fname = './%s' % (KEY % year)
+            if not os.path.isfile(fname):
+                s3.Bucket(BUCKET_NAME).download_file(KEY % year, KEY % year)
+            clf = WildfireClassifier(fname,year)
+            clf.clean()
+            classifiers[year] = clf
+            test_value = clf.test(0.7)
+        return render_template("index.html", title="Test results: %f" % test_value)
+    except:
+        return url_for('homepage')
 
 @app.errorhandler(404)
 def page_not_found(e):
