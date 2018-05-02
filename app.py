@@ -20,7 +20,7 @@ def classify_fire_size(year):
     try:
         year = int(year)
         if year in classifiers:
-            
+            print("cached")
             clf = classifiers[year]
             test_value = clf.test(.7)
         else:
