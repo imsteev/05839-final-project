@@ -29,8 +29,10 @@ def classify_fire_size(year):
             if not (valid_year_start <= year <= valid_year_end): return url_for('homepage')
             fname = './%s' % (KEY % year)
             if not os.path.isfile(fname):
-                print("downloaded")
+                print("not downloaded")
                 s3.Bucket(BUCKET_NAME).download_file(KEY % year, KEY % year)
+            else:
+                print("downloaded")
             clf = WildfireClassifier(fname,year,cleaned=True)
             classifiers[year] = clf
             test_value = clf.test(0.7)
