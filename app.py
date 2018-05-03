@@ -48,7 +48,7 @@ def classify_fire_size(year):
             clf = WildfireClassifier(fname,year,cleaned=True)
             classifiers[year] = clf
             test_value = clf.test(0.7)
-        return render_template("index.html", year=year, test_results=test_value)
+        return redirect(url_for('classification'))
     except Exception as e:
         print("couldn't load", e)
         return url_for('homepage')

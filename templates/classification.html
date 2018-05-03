@@ -14,8 +14,15 @@
     Cleaning
   </h2>
   <p>
-    There were a lot of columns that were extraneous for the purposes of classification, so the only columns we used were
-    <code>DISCOVERY_DATE, DISCOVERY_DOY, DISCOVERY_TIME, STAT_CAUSE_CODE, CONT_DATE, CONT_TIME, FIRE_SIZE_CLASS, and STATE</code>. Rows that had any of these columns missing were removed from the training/testing sets because we wanted to execute
+    There were a lot of columns that were extraneous for the purposes of classification, so the only columns we used were:
+    <code>DISCOVERY_DATE</code>
+    <code>DISCOVERY_DOY</code>
+    <code>DISCOVERY_TIME</code>
+    <code>STAT_CAUSE_CODE</code>
+    <code>CONT_DATE</code>
+    <code>CONT_TIME</code>
+    <code>FIRE_SIZE_CLASS</code>
+    <code>STATE</code>. Rows that had any of these columns missing were removed from the training/testing sets because we wanted to execute
     on as complete data as possible. Doing this removed further skewing, as we would have had to impute missing data, which
     doesn't really make sense without deeper knowledge about wildfires in the U.S. Finally, classification was performed
     on the dataset separated by year.
@@ -26,13 +33,18 @@
     Features
   </h2>
   <p>
-    <code>STAT_CAUSE_CODE, season, region, duration</code>
+
+    <code>STAT_CAUSE_CODE</code>
+    <code>season</code>
+    <code>region</code>
+    <code>duration</code>
   </p>
   <p>
-    There was a bit of experimentation with different features before settling on the above set. The reason for using fire cause
-    is fairly self-explanatory. With season, we figured that there might be more fires and perhaps bigger fires during the
-    summer due to dryness in certain areas like California. Region was chosen because different regions have different environments,
-    resulting in
+    Before training with features, we first had to extract features (for those that needed to be) from the original dataset.
+    <code>duration</code> was not originally part There was a bit of experimentation with different features before settling on the above set.
+    The reason for using fire cause is fairly self-explanatory. With season, we figured that there might be more fires and
+    perhaps bigger fires during the summer due to dryness in certain areas like California. Region was chosen because different
+    regions have different environments, resulting in
   </p>
 </div>
 <div>
