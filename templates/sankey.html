@@ -25,7 +25,6 @@
 <div>
 
   <p id="chart">
-    <script type="text/javascript" src="/static/js/d3.v3.min.js"></script>
     <script type="text/javascript" src="/static/interactive_final_sankey/sankey.js"></script>
     <script>
 
@@ -64,7 +63,7 @@
       var path = sankey.link();
 
       // load the data (using the timelyportfolio csv method)
-      d3.csv("/static/data/sankey.csv", function (error, data) {
+      d3.csv("/static/data/sankey.csv", function (data, error) {
         console.log(error)
         //set up graph in same style as original example but empty
         graph = { "nodes": [], "links": [] };
