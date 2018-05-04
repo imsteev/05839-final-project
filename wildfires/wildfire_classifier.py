@@ -29,8 +29,11 @@ class WildfireClassifier(object):
     def __init__(self, fname, year, cleaned=False):
         self.cleaned = False
         self.year = year
+        self.feature_df = None
+        self.clf = None
         with open(fname) as csvfile:
             self.df = pd.read_csv(csvfile)
+            
             
     def get_season(self, day, Y):
         seasons = [('winter', (date(Y,  1,  1),  date(Y,  3, 20))),
@@ -83,6 +86,7 @@ class WildfireClassifier(object):
         self.df['duration'] = full_cont_date - full_disc_date
 
         def get_region(state_code):
+            region_list = ['northeast','midwest','south','west']
             for region in WildfireClassifier.REGIONS:
                 if state_code in WildfireClassifier.REGIONS[region]: return region
             print(state_code)
@@ -91,6 +95,38 @@ class WildfireClassifier(object):
         
         self.cleaned = True
     
+
+    def train(self):
+        # features: 'state', 'season', 'cause', 'duration' (maybe)
+        def extract_features(row):
+            regions_list = ['northeast','midwest','south','west']
+        #     duration_min = row.duration.days * 24 * 60 + row.duration.seconds//3600
+            return [WildfireClassifier.SEASONS.index(row.season), int(row.STAT_CAUSE_CODE), regions_list.index(row.region)]
+
+        feature_df = self.df[['STAT_CAUSE_CODE', 'season', 'region', 'duration']]
+        X = [extract_features(row) for _,row in feature_df.iterrows()]
+        y = self.df['FIRE_SIZE_CLASS'].map(lambda fire_class: ord(fire_class) - ord('A'))
+
+        # https://stackoverflow.com/a/4602224/8109239
+        def unison_shuffled_copies(a, b):
+            assert len(a) == len(b)
+            p = np.random.permutation(len(a))
+            return np.asarray(a)[p], np.asarray(b)[p]
+        X,y = unison_shuffled_copies(X,y)
+        
+        # Split data into training and test sets
+        TRAIN_SIZE = round(0.8 * len(X))
+        X_train, y_train = X[:TRAIN_SIZE], y[:TRAIN_SIZE]
+        X_test, y_test = X[TRAIN_SIZE:], y[TRAIN_SIZE:]
+
+        # Use naive bayes because features are independent of each other
+        from sklearn.naive_bayes import MultinomialNB
+        from sklearn import metrics
+
+        clf = MultinomialNB()
+        clf.fit(X_train, y_train)
+        self.clf = clf
+
     def test(self, train_frac):
         label_names = [chr(ord('A') + i) for i in range(ord('G') - ord('A') + 1)]
 
@@ -125,3 +161,28 @@ class WildfireClassifier(object):
         y_pred = clf.predict(X_test)
         
         return metrics.accuracy_score(y_test,y_pred)
+    
+    def predict(self, season, region, cause):
+        region_list = ['northeast','midwest','south','west']
+        causes = [
+            'Lightning',
+            'Equipment Use',
+            'Smoking',
+            'Campfire',
+            'Debris Burning',
+            'Railroad',
+            'Arson',
+            'Children',
+            'Miscellaneous',
+            'Fireworks',
+            'Powerline',
+            'Structure',
+            'Missing/Undefined'
+        ]
+        feature_vec = [
+            WildfireClassifier.SEASONS.index(season),
+            region_list.index(region),
+            causes.index(cause) + 1
+        ]
+        prediction = self.clf.predict([feature_vec])
+        return chr(ord('A') + prediction)

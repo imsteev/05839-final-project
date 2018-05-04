@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block main_content %}
-<div>
+<section>
   <h2>Overview</h2>
   <p>
     For the advanced portion of our project, we wanted to create a predictive model that represented the wildfire data. More
@@ -7,9 +7,11 @@
     so large, supervised learning was the way to go - the dataset already provided the labels (
     <code>FIRE_SIZE_CLASS</code>). The heavy lifting required lied in cleaning the data, extracting features, and splitting the dataset into appropriate
     chunks.
+    <a href="pandas.pydata.org">Pandas</a>,
+    <a href="scikit-learn.org">Scikit</a>, and NumPy were the tools used to complete this section of the project.
   </p>
-</div>
-<div>
+</section>
+<section>
   <h2>
     Cleaning
   </h2>
@@ -27,37 +29,118 @@
     doesn't really make sense without deeper knowledge about wildfires in the U.S. Finally, classification was performed
     on the dataset separated by year.
   </p>
-</div>
-<div>
+</section>
+<section>
   <h2>
-    Features
+    Extracting Features
   </h2>
   <p>
-
     <code>STAT_CAUSE_CODE</code>
     <code>season</code>
     <code>region</code>
     <code>duration</code>
   </p>
   <p>
-    Before training with features, we first had to extract features (for those that needed to be) from the original dataset.
-    <code>duration</code> was not originally part There was a bit of experimentation with different features before settling on the above set.
-    The reason for using fire cause is fairly self-explanatory. With season, we figured that there might be more fires and
-    perhaps bigger fires during the summer due to dryness in certain areas like California. Region was chosen because different
-    regions have different environments, resulting in
-  </p>
-</div>
-<div>
-  <h2>
-    Preparing for classification
-  </h2>
-  <p>
+    Before training with features, we first had to extract features from the original dataset. Some columns were used as is (like
+    <code>STAT_CAUSE_CODE</code>) and others had to be defined from existing data, like
+    <code>duration</code>,
+    <code>season</code>, and
+    <code>region</code>.</p>
 
+  <p>There was a bit of experimentation with different features before settling on the above set. The reason for using
+    <code>STAT_CAUSE_CODE</code> is fairly self-explanatory. With
+    <code>season</code>, we figured that there might be more fires and perhaps bigger fires during the summer due to dryness and hotter temperatures
+    in certain areas like California.
+    <code>region</code> was chosen because different regions have different environments, resulting in different factors that might go into
+    affecting a fire. Furthermore,
   </p>
-</div>
-<div>
+</section>
+<section>
   <h2>Evaluation</h2>
+  <p>
+    Once finished with feature extraction, we had to split the feature vectors and labels into training and testing sets. A Multinomial
+    Naive Bayes (because labels are not binary) was fit using an 80-20 split.
+  </p>
+  <p>
+    The classifier did not perform as well as we would have liked it to. For example, in 1995, the classifier accuracy (calculated
+    as number of correctly matched labels over total size) was: [INSERT PERCENTAGE HERE]. After further investigation into
+    the confusion matrix, the classifier was predicting only two class sizes, A and B. This is most likely due to the fact
+    that there are so many more small fire sizes, compared to larger ones. As we learned in class, Naive Bayes does not work
+    well with skewed data.
+  </p>
+  <p>
+    From this evaluation, we experimented with different features and labels. For example, instead of using the exact cause of
+    the fire, we can separate a cause into two buckets: natural vs. human. Unfortunately, this performed roughly as well
+    as the original evaluation.
+  </p>
+  <p>Interestingly, we were able to get good classification by handling the labels differently, while using the original features.
+    Instead of directly using the class sizes, the sizes can be bucketed into small (A through C), medium (D through F),
+    and large (G). Doing so yielded "good" results - the classifier predicted with more than 90% accuracy. But, looking at
+    the confusion matrix to see where the predictions were true and false, all the predictions ended up in the "small" bucket.
+    Again, we predict that this is due to heavy skewing due to the number of small fires.
+  </p>
   <p></p>
-</div>
-<span>Test results for {{ year }}: {{ test_results }}</span>
-{% endblock %}
+</section>
+<section>
+  <h2>Interaction</h2>
+  <p>Use the following form to select features to predict a fire size class for a particular year.</p>
+  <form class='form-control' action="{{ url_for('classify') }}" method="POST">
+    <div>
+      <label>Year</label>
+      <select name='year'>
+        {% for year in years %}
+        <option value="{{ year }}">{{ year }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label>Cause</label>
+      <select name='cause'>
+        {% for cause in causes %}
+        <option value="{{ cause }}">{{ cause }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label>Region</label>
+      <select name='region'>
+        {% for region in regions %}
+        <option value="{{ region }}">{{ region }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for='season'>Season</label>
+      <select name='season'>
+        {% for season in seasons %}
+        <option value="{{ season }}">{{ season }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div style='margin-top:10px;'>
+      <button type="submit" class="primary">Predict!</button>
+    </div>
+  </form>
+</section>
+{% if prediction %}
+<section>
+  <h2>Prediction size class: {{ prediction }}</h2>
+  <div>
+    <h3>Using Query Terms</h3>
+    <ul>
+      <li>
+        Year: {{ year }}
+      </li>
+      <li>
+        Cause: {{ cause }}
+      </li>
+      <li>
+        Region: {{ region }}
+      </li>
+      <li>
+        Season: {{ season }}
+      </li>
+    </ul>
+  </div>
+</section>
+{% endif %} {% endblock %}

@@ -11,6 +11,25 @@ BUCKET_NAME = 'spchung-kediz-final-project'
 KEY = "trimmed_wildfires_%d.csv"
 classifiers = {}
 
+years = list(range(1992,2016))
+causes = [
+    'Lightning',
+    'Equipment Use',
+    'Smoking',
+    'Campfire',
+    'Debris Burning',
+    'Railroad',
+    'Arson',
+    'Children',
+    'Miscellaneous',
+    'Fireworks',
+    'Powerline',
+    'Structure',
+    'Missing/Undefined'
+]
+seasons = WildfireClassifier.SEASONS
+regions = WildfireClassifier.REGIONS.keys()
+
 @app.route('/')
 def homepage():
     return render_template("index.html", title="05839 Final Project")
@@ -25,16 +44,35 @@ def data():
 
 @app.route('/classification')
 def classification():
-    return render_template("classification.html", title="Classification")
+    prediction = request.args.get('prediction')
+    year = request.args.get('year')
+    season = request.args.get('season')
+    region = request.args.get('region')
+    cause = request.args.get('cause')
+    return render_template("classification.html", 
+                            title="Classification", 
+                            years=years, 
+                            causes=causes, 
+                            regions=regions, 
+                            seasons=seasons,
+                            year=year, 
+                            season=season, 
+                            region=region, 
+                            cause=cause,
+                            prediction=prediction)
 
-@app.route('/classify/<year>')
-def classify_fire_size(year):
+@app.route('/classify', methods=['POST'])
+def classify():
+    print(request.form)
     try:
-        year = int(year)
+        year = int(request.form['year'])
+        season = request.form['season']
+        region = request.form['region']
+        cause = request.form['cause']
         if year in classifiers:
             print("cached")
             clf = classifiers[year]
-            test_value = clf.test(.7)
+            size_class = clf.predict(season,region,cause)
         else:
             valid_year_start = 1992
             valid_year_end = 2015
@@ -46,9 +84,10 @@ def classify_fire_size(year):
             else:
                 print("downloaded")
             clf = WildfireClassifier(fname,year,cleaned=True)
+            clf.train()
             classifiers[year] = clf
-            test_value = clf.test(0.7)
-        return redirect(url_for('classification'))
+            size_class = clf.predict(season,region,cause)
+        return redirect(url_for('classification', year=year, season=season, region=region, cause=cause, prediction=size_class))
     except Exception as e:
         print("couldn't load", e)
         return url_for('homepage')
