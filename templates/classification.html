@@ -83,7 +83,7 @@
 </section>
 <section>
   <h2>Interaction</h2>
-  <p>Use the following form to select features to predict a fire size class for a particular year.</p>
+  <p>Use the following form to predict a fire size class for a particular year.</p>
   <form class='form-control' action="{{ url_for('classify') }}" method="POST">
     <div>
       <label>Year</label>
@@ -117,7 +117,7 @@
         {% endfor %}
       </select>
     </div>
-    <div style='margin-top:10px;'>
+    <div style='margin-top:16px;'>
       <button type="submit" class="primary">Predict!</button>
     </div>
   </form>

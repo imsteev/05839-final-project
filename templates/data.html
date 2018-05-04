@@ -1,16 +1,51 @@
 {% extends 'base.html' %} {% block main_content %}
-<div>
-  <section>
+<section>
+  <h2>About</h2>
+  <p>The data used in this project is about wildfires that occured in the U.S from 1992 to 2015. Things like location, cause,
+    discovered date, containment date, and fire size can be found in the dataset.
+  </p>
+</section>
+<section>
+  <h2>Process</h2>
+  <div>
+    <h3>Collecting Data</h3>
+    <p>The data collected was from a dataset found on Kaggle. It is publicly available for download
+      <a href='https://www.kaggle.com/rtatman/188-million-us-wildfires'>here</a>
+    </p>
+  </div>
+  <div>
+    <h3>Cleaning</h3>
+    <p>Aside from dropping rows that had missing values, there was not much cleaning to be done.
+    </p>
+  </div>
+</section>
+<section>
+  <h2>Data Quality</h2>
+  <div>
     <h3>Completeness</h3>
-  </section>
-  <section>
-    <h3>Cohrence</h3>
-  </section>
-  <section>
+    <p>Upon first examination, there were some missing values for certain columns. However, many of these fields were ones that
+      were not used for this project. For columns that we did use that had missing values, we dropped those rows.</p>
+  </div>
+  <div>
+    <h3>Coherence</h3>
+    <p>The data is mostly coherent on its own. There was no indication of the units of the fire size, what range a fire size
+      class falls under, and the dates were in Julian format. Without the guide provided by the source, it would have been
+      difficult to completely understand these fields. Also, some of the column headers were abbreviated, like CONT_DATE.
+      We initially thought this stood for "continued date", but it actually stands for "contained date".
+    </p>
+  </div>
+  <div>
     <h3>Correctness</h3>
-  </section>
-  <section>
+    <p>The data is correct. From the source, "The data were transformed to conform, when possible, to the data standards of
+      the National Wildfire Coordinating Group (NWCG). Basic error-checking was performed and redundant records were identified
+      and removed, to the degree possible". </p>
+  </div>
+  <div>
     <h3>Accountability</h3>
-  </section>
-</div>
+    <p>The dataset was originally sourced from the Department of Agriculture, so it is accountable. The following is a formal
+      reference citation:</p>
+    <p>Short, Karen C. 2017. Spatial wildfire occurrence data for the United States, 1992-2015 [FPA_FOD_20170508]. 4th Edition.
+      Fort Collins, CO: Forest Service Research Data Archive. https://doi.org/10.2737/RDS-2013-0009.4</p>
+  </div>
+</section>
 {% endblock %}
