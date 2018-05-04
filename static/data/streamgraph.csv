@@ -1,0 +1,313 @@
+key,value,date
+Structure,20,01/01/92
+Structure,14,01/01/93
+Structure,38,01/01/94
+Structure,53,01/01/95
+Structure,80,01/01/96
+Structure,74,01/01/97
+Structure,60,01/01/98
+Structure,73,01/01/99
+Structure,83,01/01/00
+Structure,82,01/01/01
+Structure,101,01/01/02
+Structure,79,01/01/03
+Structure,110,01/01/04
+Structure,107,01/01/05
+Structure,63,01/01/06
+Structure,57,01/01/07
+Structure,59,01/01/08
+Structure,34,01/01/09
+Structure,80,01/01/10
+Structure,80,01/01/11
+Structure,143,01/01/12
+Structure,59,01/01/13
+Structure,284,01/01/14
+Structure,327,01/01/15
+Powerline,81,01/01/92
+Powerline,74,01/01/93
+Powerline,101,01/01/94
+Powerline,97,01/01/95
+Powerline,141,01/01/96
+Powerline,100,01/01/97
+Powerline,205,01/01/98
+Powerline,217,01/01/99
+Powerline,156,01/01/00
+Powerline,150,01/01/01
+Powerline,146,01/01/02
+Powerline,152,01/01/03
+Powerline,107,01/01/04
+Powerline,117,01/01/05
+Powerline,235,01/01/06
+Powerline,129,01/01/07
+Powerline,139,01/01/08
+Powerline,98,01/01/09
+Powerline,460,01/01/10
+Powerline,296,01/01/11
+Powerline,157,01/01/12
+Powerline,169,01/01/13
+Powerline,1431,01/01/14
+Powerline,1510,01/01/15
+Fireworks,152,01/01/92
+Fireworks,172,01/01/93
+Fireworks,317,01/01/94
+Fireworks,154,01/01/95
+Fireworks,288,01/01/96
+Fireworks,209,01/01/97
+Fireworks,193,01/01/98
+Fireworks,204,01/01/99
+Fireworks,220,01/01/00
+Fireworks,254,01/01/01
+Fireworks,349,01/01/02
+Fireworks,406,01/01/03
+Fireworks,402,01/01/04
+Fireworks,472,01/01/05
+Fireworks,981,01/01/06
+Fireworks,628,01/01/07
+Fireworks,372,01/01/08
+Fireworks,313,01/01/09
+Fireworks,168,01/01/10
+Fireworks,313,01/01/11
+Fireworks,602,01/01/12
+Fireworks,356,01/01/13
+Fireworks,572,01/01/14
+Fireworks,561,01/01/15
+Railroad,221,01/01/92
+Railroad,242,01/01/93
+Railroad,199,01/01/94
+Railroad,298,01/01/95
+Railroad,309,01/01/96
+Railroad,373,01/01/97
+Railroad,286,01/01/98
+Railroad,296,01/01/99
+Railroad,241,01/01/00
+Railroad,218,01/01/01
+Railroad,203,01/01/02
+Railroad,128,01/01/03
+Railroad,136,01/01/04
+Railroad,137,01/01/05
+Railroad,116,01/01/06
+Railroad,121,01/01/07
+Railroad,135,01/01/08
+Railroad,146,01/01/09
+Railroad,206,01/01/10
+Railroad,122,01/01/11
+Railroad,121,01/01/12
+Railroad,86,01/01/13
+Railroad,58,01/01/14
+Railroad,36,01/01/15
+Missing/Undefined,592,01/01/92
+Missing/Undefined,1072,01/01/93
+Missing/Undefined,848,01/01/94
+Missing/Undefined,1551,01/01/95
+Missing/Undefined,395,01/01/96
+Missing/Undefined,1806,01/01/97
+Missing/Undefined,795,01/01/98
+Missing/Undefined,495,01/01/99
+Missing/Undefined,386,01/01/00
+Missing/Undefined,395,01/01/01
+Missing/Undefined,317,01/01/02
+Missing/Undefined,920,01/01/03
+Missing/Undefined,913,01/01/04
+Missing/Undefined,1570,01/01/05
+Missing/Undefined,145,01/01/06
+Missing/Undefined,618,01/01/07
+Missing/Undefined,816,01/01/08
+Missing/Undefined,1056,01/01/09
+Missing/Undefined,177,01/01/10
+Missing/Undefined,1258,01/01/11
+Missing/Undefined,1112,01/01/12
+Missing/Undefined,2674,01/01/13
+Missing/Undefined,900,01/01/14
+Missing/Undefined,1015,01/01/15
+Smoking,856,01/01/92
+Smoking,1006,01/01/93
+Smoking,766,01/01/94
+Smoking,943,01/01/95
+Smoking,760,01/01/96
+Smoking,756,01/01/97
+Smoking,802,01/01/98
+Smoking,853,01/01/99
+Smoking,620,01/01/00
+Smoking,699,01/01/01
+Smoking,830,01/01/02
+Smoking,421,01/01/03
+Smoking,373,01/01/04
+Smoking,373,01/01/05
+Smoking,316,01/01/06
+Smoking,318,01/01/07
+Smoking,334,01/01/08
+Smoking,309,01/01/09
+Smoking,784,01/01/10
+Smoking,241,01/01/11
+Smoking,316,01/01/12
+Smoking,332,01/01/13
+Smoking,1256,01/01/14
+Smoking,122,01/01/15
+Equipment Use,965,01/01/92
+Equipment Use,1094,01/01/93
+Equipment Use,830,01/01/94
+Equipment Use,1069,01/01/95
+Equipment Use,1048,01/01/96
+Equipment Use,1167,01/01/97
+Equipment Use,1401,01/01/98
+Equipment Use,1536,01/01/99
+Equipment Use,1239,01/01/00
+Equipment Use,1493,01/01/01
+Equipment Use,1468,01/01/02
+Equipment Use,1330,01/01/03
+Equipment Use,1449,01/01/04
+Equipment Use,1589,01/01/05
+Equipment Use,1382,01/01/06
+Equipment Use,1569,01/01/07
+Equipment Use,2063,01/01/08
+Equipment Use,1833,01/01/09
+Equipment Use,1879,01/01/10
+Equipment Use,1671,01/01/11
+Equipment Use,1715,01/01/12
+Equipment Use,1504,01/01/13
+Equipment Use,4472,01/01/14
+Equipment Use,4014,01/01/15
+Children,990,01/01/92
+Children,882,01/01/93
+Children,855,01/01/94
+Children,1097,01/01/95
+Children,1021,01/01/96
+Children,1153,01/01/97
+Children,1401,01/01/98
+Children,1108,01/01/99
+Children,1091,01/01/00
+Children,897,01/01/01
+Children,958,01/01/02
+Children,1022,01/01/03
+Children,628,01/01/04
+Children,823,01/01/05
+Children,755,01/01/06
+Children,727,01/01/07
+Children,869,01/01/08
+Children,754,01/01/09
+Children,546,01/01/10
+Children,520,01/01/11
+Children,790,01/01/12
+Children,520,01/01/13
+Children,423,01/01/14
+Children,414,01/01/15
+Campfire,1990,01/01/92
+Campfire,2241,01/01/93
+Campfire,1852,01/01/94
+Campfire,2138,01/01/95
+Campfire,2215,01/01/96
+Campfire,1879,01/01/97
+Campfire,2007,01/01/98
+Campfire,2199,01/01/99
+Campfire,1768,01/01/00
+Campfire,2121,01/01/01
+Campfire,1896,01/01/02
+Campfire,1630,01/01/03
+Campfire,1655,01/01/04
+Campfire,1648,01/01/05
+Campfire,1442,01/01/06
+Campfire,1709,01/01/07
+Campfire,1832,01/01/08
+Campfire,1967,01/01/09
+Campfire,1884,01/01/10
+Campfire,1846,01/01/11
+Campfire,2057,01/01/12
+Campfire,1859,01/01/13
+Campfire,1492,01/01/14
+Campfire,1468,01/01/15
+Miscellaneous,2799,01/01/92
+Miscellaneous,2739,01/01/93
+Miscellaneous,2383,01/01/94
+Miscellaneous,3034,01/01/95
+Miscellaneous,2589,01/01/96
+Miscellaneous,2575,01/01/97
+Miscellaneous,4328,01/01/98
+Miscellaneous,3654,01/01/99
+Miscellaneous,2920,01/01/00
+Miscellaneous,3235,01/01/01
+Miscellaneous,4168,01/01/02
+Miscellaneous,3114,01/01/03
+Miscellaneous,3208,01/01/04
+Miscellaneous,4586,01/01/05
+Miscellaneous,3709,01/01/06
+Miscellaneous,4469,01/01/07
+Miscellaneous,3172,01/01/08
+Miscellaneous,3103,01/01/09
+Miscellaneous,7518,01/01/10
+Miscellaneous,3861,01/01/11
+Miscellaneous,3463,01/01/12
+Miscellaneous,4050,01/01/13
+Miscellaneous,1828,01/01/14
+Miscellaneous,2099,01/01/15
+Debris Burning,3185,01/01/92
+Debris Burning,4554,01/01/93
+Debris Burning,2056,01/01/94
+Debris Burning,3548,01/01/95
+Debris Burning,2954,01/01/96
+Debris Burning,3773,01/01/97
+Debris Burning,2891,01/01/98
+Debris Burning,2746,01/01/99
+Debris Burning,2036,01/01/00
+Debris Burning,2006,01/01/01
+Debris Burning,2469,01/01/02
+Debris Burning,2514,01/01/03
+Debris Burning,3346,01/01/04
+Debris Burning,2745,01/01/05
+Debris Burning,1295,01/01/06
+Debris Burning,2310,01/01/07
+Debris Burning,3984,01/01/08
+Debris Burning,3921,01/01/09
+Debris Burning,3744,01/01/10
+Debris Burning,3386,01/01/11
+Debris Burning,2547,01/01/12
+Debris Burning,2096,01/01/13
+Debris Burning,963,01/01/14
+Debris Burning,1076,01/01/15
+Arson,3773,01/01/92
+Arson,5940,01/01/93
+Arson,2281,01/01/94
+Arson,5056,01/01/95
+Arson,2981,01/01/96
+Arson,3452,01/01/97
+Arson,3867,01/01/98
+Arson,3485,01/01/99
+Arson,2880,01/01/00
+Arson,3156,01/01/01
+Arson,3324,01/01/02
+Arson,2716,01/01/03
+Arson,3023,01/01/04
+Arson,4051,01/01/05
+Arson,3664,01/01/06
+Arson,3977,01/01/07
+Arson,3978,01/01/08
+Arson,3508,01/01/09
+Arson,2858,01/01/10
+Arson,3757,01/01/11
+Arson,3206,01/01/12
+Arson,1889,01/01/13
+Arson,1753,01/01/14
+Arson,2021,01/01/15
+Lightning,10288,01/01/92
+Lightning,5355,01/01/93
+Lightning,13829,01/01/94
+Lightning,6688,01/01/95
+Lightning,11107,01/01/96
+Lightning,7262,01/01/97
+Lightning,8026,01/01/98
+Lightning,8492,01/01/99
+Lightning,11874,01/01/00
+Lightning,10701,01/01/01
+Lightning,9151,01/01/02
+Lightning,11124,01/01/03
+Lightning,10003,01/01/04
+Lightning,7070,01/01/05
+Lightning,11250,01/01/06
+Lightning,8294,01/01/07
+Lightning,7076,01/01/08
+Lightning,7644,01/01/09
+Lightning,3780,01/01/10
+Lightning,7125,01/01/11
+Lightning,7318,01/01/12
+Lightning,8613,01/01/13
+Lightning,8505,01/01/14
+Lightning,9514,01/01/15
