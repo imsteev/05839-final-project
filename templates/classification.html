@@ -17,13 +17,10 @@
   </h2>
   <p>
     There were a lot of columns that were extraneous for the purposes of classification, so the only columns we used were:
-    <code>DISCOVERY_DATE</code>
-    <code>DISCOVERY_DOY</code>
-    <code>DISCOVERY_TIME</code>
+    <code>STAT_CAUSE_DESCR</code>
     <code>STAT_CAUSE_CODE</code>
-    <code>CONT_DATE</code>
-    <code>CONT_TIME</code>
     <code>FIRE_SIZE_CLASS</code>
+    <code>FIRE_SIZE</code>
     <code>STATE</code>. Rows that had any of these columns missing were removed from the training/testing sets because we wanted to execute
     on as complete data as possible. Doing this removed further skewing, as we would have had to impute missing data, which
     doesn't really make sense without deeper knowledge about wildfires in the U.S. Finally, classification was performed
@@ -38,12 +35,10 @@
     <code>STAT_CAUSE_CODE</code>
     <code>season</code>
     <code>region</code>
-    <code>duration</code>
   </p>
   <p>
     Before training with features, we first had to extract features from the original dataset. Some columns were used as is (like
     <code>STAT_CAUSE_CODE</code>) and others had to be defined from existing data, like
-    <code>duration</code>,
     <code>season</code>, and
     <code>region</code>.</p>
 
