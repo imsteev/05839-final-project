@@ -76,66 +76,89 @@
   </p>
   <p></p>
 </section>
+<hr>
 <section>
   <h2>Interaction</h2>
   <p>Use the following form to predict a fire size class for a particular year.</p>
-  <form class='form-control' action="{{ url_for('classify') }}" method="POST">
-    <div>
-      <label>Year</label>
-      <select name='year'>
-        {% for year in years %}
-        <option value="{{ year }}">{{ year }}</option>
-        {% endfor %}
-      </select>
+  <div class='row'>
+    <div class='col-6 col-xs-12'>
+      <form class='form-control' action="{{ url_for('classify') }}" method="POST">
+        <div>
+          <label>Year</label>
+          <select name='year'>
+            {% for year in years %}
+            <option value="{{ year }}">{{ year }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div>
+          <label>Cause</label>
+          <select name='cause'>
+            {% for cause in causes %}
+            <option value="{{ cause }}">{{ cause }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div>
+          <label>Region</label>
+          <select name='region'>
+            {% for region in regions %}
+            <option value="{{ region }}">{{ region }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div>
+          <label for='season'>Season</label>
+          <select name='season'>
+            {% for season in seasons %}
+            <option value="{{ season }}">{{ season }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div style='margin-top:16px;'>
+          <button type="submit" class="primary">Predict!</button>
+        </div>
+      </form>
     </div>
-    <div>
-      <label>Cause</label>
-      <select name='cause'>
-        {% for cause in causes %}
-        <option value="{{ cause }}">{{ cause }}</option>
-        {% endfor %}
-      </select>
+    {% if prediction %}
+    <div class='col-6 col-xs-12'>
+      <h3 style='text-align: center; font-weight: bold;'>Fire Size Class Prediction: {{ prediction }}</h3>
+      <div class='inner'>
+        <div class="table-wrapper">
+          <table class="alt">
+            <thead>
+              <tr>
+                <th>Fire Size Class</th>
+                <th>Range (in acres)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for size_class in ranges %}
+              <tr>
+                <td>{{ size_class }}</td>
+                <td>{{ ranges[size_class] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <h3>Your Query</h3>
+          <ul style='list-style-type: none;'>
+            <li>
+              Year: {{ year }}
+            </li>
+            <li>
+              Cause: {{ cause }}
+            </li>
+            <li>
+              Region: {{ region }}
+            </li>
+            <li>
+              Season: {{ season }}
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div>
-      <label>Region</label>
-      <select name='region'>
-        {% for region in regions %}
-        <option value="{{ region }}">{{ region }}</option>
-        {% endfor %}
-      </select>
-    </div>
-    <div>
-      <label for='season'>Season</label>
-      <select name='season'>
-        {% for season in seasons %}
-        <option value="{{ season }}">{{ season }}</option>
-        {% endfor %}
-      </select>
-    </div>
-    <div style='margin-top:16px;'>
-      <button type="submit" class="primary">Predict!</button>
-    </div>
-  </form>
-</section>
-{% if prediction %}
-<section>
-  <h2>Prediction size class: {{ prediction }}</h2>
-  <div>
-    <h3>Using Query Terms</h3>
-    <ul>
-      <li>
-        Year: {{ year }}
-      </li>
-      <li>
-        Cause: {{ cause }}
-      </li>
-      <li>
-        Region: {{ region }}
-      </li>
-      <li>
-        Season: {{ season }}
-      </li>
-    </ul>
+    {% endif %}
   </div>
-</section>
-{% endif %} {% endblock %}
+</section> {% endblock %}

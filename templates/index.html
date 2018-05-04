@@ -1,8 +1,80 @@
-{% extends 'base.html' %} {% block main_content %}
-<div class='tableau'>
-  {% include 'firesize_and_season.html' %}
-</div>
-<div class='streamgraph'>
-  {% include 'streamgraph.html' %}
-</div>
-{% endblock %}
+<!DOCTYPE HTML>
+<html>
+
+{% include 'head.html' %}
+
+<body class="is-preload">
+
+  <!-- Header -->
+  <header id="header">
+    <a class="logo" href="{{ url_for('homepage') }}">Home</a>
+    <nav>
+      <a href="#menu">Menu</a>
+    </nav>
+  </header>
+
+  <!-- Nav -->
+  {% include 'nav.html' %}
+
+  <!-- Banner -->
+  <section id="banner">
+    <div class="inner">
+      <h1>Exploration of Wildfires</h1>
+      <p>Carnegie Mellon University ‧ Interactive Data Science</p>
+    </div>
+    <!-- <video autoplay loop muted playsinline src="/static/assets/banner.mp4"></video> -->
+  </section>
+
+  <!-- Highlights -->
+  <section class="wrapper">
+    <div class="inner">
+      <header class="special">
+        <h2>Leading question 1</h2>
+        <p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare
+          aliquet accumsan erat tempus amet porttitor.</p>
+      </header>
+      {% include 'firesize_and_season.html' %}
+    </div>
+  </section>
+  <section class="wrapper alternate-background">
+    <div class="inner">
+      <header class="special">
+        <h2>Leading question 2</h2>
+        <p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare
+          aliquet accumsan erat tempus amet porttitor.</p>
+      </header>
+      {% include 'streamgraph.html' %}
+    </div>
+  </section>
+  <section class="wrapper">
+    <div class="inner">
+      <header class="special">
+        <h2>Leading question 3</h2>
+        <p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare
+          aliquet accumsan erat tempus amet porttitor.</p>
+      </header>
+
+    </div>
+  </section>
+  <section class="wrapper alternate-background">
+    <div class="inner">
+      <header class="special">
+        <h2>Conclusion</h2>
+        <p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare
+          aliquet accumsan erat tempus amet porttitor.</p>
+      </header>
+
+    </div>
+  </section>
+
+  {% include 'footer.html' %}
+
+  <script src="/static/templated-industrious/js/jquery.min.js"></script>
+  <script src="/static/templated-industrious/js/browser.min.js"></script>
+  <script src="/static/templated-industrious/js/breakpoints.min.js"></script>
+  <script src="/static/templated-industrious/js/util.js"></script>
+  <script src="/static/templated-industrious/js/main.js"></script>
+
+</body>
+
+</html>

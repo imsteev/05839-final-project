@@ -1,3 +1,7 @@
 .tableau { 
   width: 500px;
 }
+
+.alternate-background {
+  background: rgb(228, 227, 227);
+}

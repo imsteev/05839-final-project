@@ -10,7 +10,15 @@ s3 = boto3.resource('s3')
 BUCKET_NAME = 'spchung-kediz-final-project'
 KEY = "trimmed_wildfires_%d.csv"
 classifiers = {}
-
+ranges = {
+    'A' : "0 to 0.25",
+    'B' : '0.26 to 9.9',
+    'C' : '10.0 to 99.9',
+    'D' : '100 to 299',
+    'E' : '300 to 999',
+    'F' : '1000 to 4999',
+    'G' : '5000+'
+}
 years = list(range(1992,2016))
 causes = [
     'Lightning',
@@ -32,7 +40,7 @@ regions = WildfireClassifier.REGIONS.keys()
 
 @app.route('/')
 def homepage():
-    return render_template("index.html", title="05839 Final Project")
+    return render_template("index.html")
 
 @app.route('/about')
 def about():
@@ -59,7 +67,8 @@ def classification():
                             season=season, 
                             region=region, 
                             cause=cause,
-                            prediction=prediction)
+                            prediction=prediction,
+                            ranges=ranges)
 
 @app.route('/classify', methods=['POST'])
 def classify():
