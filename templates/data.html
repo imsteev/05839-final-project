@@ -2,7 +2,9 @@
 <section>
   <h2>About</h2>
   <p>The data used in this project is about wildfires that occured in the U.S from 1992 to 2015. Things like location, cause,
-    discovered date, containment date, and fire size can be found in the dataset.
+    discovered date, containment date, and fire size can be found in the dataset. Because the data used to train the classifier's
+    were relatively large, these files are hosted on Amazon S3 and are downloaded when needed (i.e, for the user interaction
+    portion of this project).
   </p>
 </section>
 <section>
@@ -10,12 +12,13 @@
   <div>
     <h3>Collecting Data</h3>
     <p>The data collected was from a dataset found on Kaggle. It is publicly available for download
-      <a href='https://www.kaggle.com/rtatman/188-million-us-wildfires'>here</a>
+      <a href='https://www.kaggle.com/rtatman/188-million-us-wildfires'>here</a>.
     </p>
   </div>
   <div>
     <h3>Cleaning</h3>
-    <p>Aside from dropping rows that had missing values, there was not much cleaning to be done.
+    <p>Aside from dropping rows that had missing values, there was not much cleaning to be done. We were able to use the data
+      as is and was able to extract different columns based on original data.
     </p>
   </div>
 </section>

@@ -5,3 +5,9 @@
 .alternate-background {
   background: rgb(228, 227, 227);
 }
+
+.centered {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}

@@ -8,7 +8,8 @@
     <code>FIRE_SIZE_CLASS</code>). The heavy lifting required lied in cleaning the data, extracting features, and splitting the dataset into appropriate
     chunks.
     <a href="pandas.pydata.org">Pandas</a>,
-    <a href="scikit-learn.org">Scikit</a>, and NumPy were the tools used to complete this section of the project.
+    <a href="scikit-learn.org">Scikit</a>, and NumPy were the tools used to complete this section of the project. You can view the details of how we
+    created the classifier in the source code at /wildfires/wildfire_classifier.py
   </p>
 </section>
 <section>
@@ -32,6 +33,7 @@
     Extracting Features
   </h2>
   <p>
+    Features used:
     <code>STAT_CAUSE_CODE</code>
     <code>season</code>
     <code>region</code>
@@ -58,10 +60,9 @@
   </p>
   <p>
     The classifier did not perform as well as we would have liked it to. For example, in 1995, the classifier accuracy (calculated
-    as number of correctly matched labels over total size) was: [INSERT PERCENTAGE HERE]. After further investigation into
-    the confusion matrix, the classifier was predicting only two class sizes, A and B. This is most likely due to the fact
-    that there are so many more small fire sizes, compared to larger ones. As we learned in class, Naive Bayes does not work
-    well with skewed data.
+    as number of correctly matched labels over total size) was 54.34%. After further investigation into the confusion matrix,
+    the classifier was predicting only two class sizes, A and B. This is most likely due to the fact that there are so many
+    more small fire sizes, compared to larger ones. As we learned in class, Naive Bayes does not work well with skewed data.
   </p>
   <p>
     From this evaluation, we experimented with different features and labels. For example, instead of using the exact cause of
@@ -74,24 +75,34 @@
     the confusion matrix to see where the predictions were true and false, all the predictions ended up in the "small" bucket.
     Again, we predict that this is due to heavy skewing due to the number of small fires.
   </p>
-  <div class='inner'>
-    <h2>Classifier Results from 1992 to 2015</h2>
-    <table class="alt">
-      <thead>
-        <tr>
-          <th>Fire Size Class</th>
-          <th>Range (in acres)</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for size_class in ranges %}
-        <tr>
-          <td>{{ size_class }}</td>
-          <td>{{ ranges[size_class] }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+  <p>
+    Overall, there is definitely room to improve. Perhaps we could have chosen a more normalized sample of the dataset to train
+    on, instead of training on the skewed data. Or maybe we could have chosen better features and extracted features into
+    more fitting buckets. Because predicting a fire size is a fairly unusual characteristic to "predict", and the fact that
+    a fire's context (i.e, date, cause, season, etc.) might in fact be somewhat dependent on each other, a Naive Bayes model
+    may not have been the best choice to use for our classifier.
+  </p>
+  <div class='row inner' style='text-align: center;'>
+    <div class="col-8 centered">
+      <h2>Results from 1992 to 2015</h2>
+      <h4>Using these features: STAT_CAUSE_CODE, region, season</h4>
+      <table class="alt">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Classifier Accuracy (correct predictions / total predictions)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for result in classifier_results %}
+          <tr>
+            <td>{{ result[0] }}</td>
+            <td>{{ result[1] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 <hr>
