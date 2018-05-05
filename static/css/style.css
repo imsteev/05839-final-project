@@ -5,3 +5,8 @@
 .alternate-background {
   background: rgb(228, 227, 227);
 }
+
+html, body {
+  max-width:100%;
+  overflow-x: hidden;
+}

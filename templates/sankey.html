@@ -30,11 +30,11 @@
       var units = "Widgets";
 
       var margin = { top: 10, right: 10, bottom: 10, left: 10 },
-        width = 1200 - margin.left - margin.right,
+        width = 1100 - margin.left - margin.right,
         height = 800 - margin.top - margin.bottom;
       // height = 800 - margin.top - margin.bottom;
 
-      var colorrange = ["#B30000", "#E34A33", "#FC8D59", "#FDBB84", "#FDD49E", "#FEF0D9"];
+      var colorrange = ["#B30000", "#E34A33", "#FC8D59", "#FDBB84", "#FDD49E", "#FEF0D9","#980043", "#DD1C77", "#DF65B0", "#C994C7", "#D4B9DA", "#F1EEF6"];
 
       var formatNumber = d3.format(",.0f"),    // zero decimal places
         format = function (d) { return formatNumber(d) + " " + units; },
@@ -42,7 +42,7 @@
         color = d3.scale.ordinal()
           .range(colorrange);
       // color = d3.interpolateRgb ("#045A8D","#980043");
-      console.log(color)
+      // console.log(color)
 
       // append the svg canvas to the page
       var svg = d3.select("#sankeyChart").append("svg")
@@ -63,7 +63,7 @@
 
       // load the data (using the timelyportfolio csv method)
       d3.csv("/static/data/sankey.csv", function (error, data) {
-        console.log("SANKEY", error)
+        // console.log("SANKEY", error)
         //set up graph in same style as original example but empty
         graph = { "nodes": [], "links": [] };
 
