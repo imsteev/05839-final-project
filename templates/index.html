@@ -29,30 +29,111 @@
   <section class="wrapper">
     <div class="inner">
       <header class="special">
-        <h2>Leading question 1</h2>
-        <p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare
-          aliquet accumsan erat tempus amet porttitor.</p>
+        <h2>Introduction</h2>
       </header>
+      <div class="inner">
+        <p>A wildfire or wildland fire is a fire in an area of combustible vegetation that occurs in the countryside or rural
+          area. Wildfires can be characterized in terms of the cause of ignition, their physical properties, the combustible
+          material present, and the effect of weather on the fire. Wildfires can cause damage to property and human life,
+          but they have many beneficial effects on native vegetation, animals, and ecosystems that have evolved with fire.
+          <a href="https://en.wikipedia.org/wiki/Wildfire">[1]</a>.</p>
+        <p>It’s costly to control and suppress wildfire. In California, the U.S. Forest Service spends about $200 million per
+          year to suppress 98% of wildfires and up to $1 billion to suppress the other 2% of fires that escape initial attack
+          and become large.
+          <a href="https://www.fs.usda.gov/detail/r5/landmanagement/?cid=stelprdb5412095">[2]</a>.</p>
+        <p> In order to have a overall concept of the wildfire in the US, we plot the location, size and season of the wildfires
+          occured in the U.S from 1992 to 2015 on the map below. The data we use here originally comes from
+          <a href="https://www.fs.usda.gov/rds/archive/Product/RDS-2013-0009.4/">Forest Service Research Data Archive</a>.
+        </p>
+      </div>
       {% include 'firesize_and_season.html' %}
+      <div class="inner" style="margin-top:36px;">
+        <div>
+          <div>
+            Here are some interesting facts we can observe from the map:
+          </div>
+          <ol>
+            <li>
+              Most of middle to large scale wildfires occur in west and south of conterminous US and Alaska.
+            </li>
+            <li>
+              The location and season of the wildfire is highly related. For example, you can most of the wildfire happened during winter
+              time is in south California; Fires in Rocky Mountains happen during the autumn, and fires in Alaska mostly
+              happened during summer.
+            </li>
+            <li>
+              The occurrences of larger scale wildfire is quite rare compared to that of small scale wildfire. The map is set in default
+              to display the fires over 5000 acres. However, you play with the filter and display fires with smaller scale,
+              you will find much denser points on the map.
+            </li>
+            <li>
+              The data from some states might be missing or incorrectly recorded in the dataset because when you show all the fires in
+              the map, you will find that the density of occurrences are not continuous when it crosses the state borders.
+            </li>
+          </ol>
+          <p>
+            After having an overall concept of the wildfires in US, we will dive into more specific question about the wildfire in following
+            sections.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
   <section class="wrapper alternate-background">
     <div class="inner">
       <header class="special">
-        <h2>Leading question 2</h2>
-        <p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare
-          aliquet accumsan erat tempus amet porttitor.</p>
+        <h2>How many wildfires are caused by
+          <span style='font-style:italic;'>X</span> ?</h2>
       </header>
+      <div class="inner">
+        <p>
+          Wildfires have many different causes, both human and natural. From the stream graph below, you can get a sense of the volume
+          of the number of wildfires that happen due to a certain cause. If we don't consider miscellaneous or undocumented
+          causes, lightning is one of the primary natural causes of wildfires in the United States. Among human causes, arson
+          and debris burning make up a good chunk of occurences compared to other human induced wildfires.
+        </p>
+        <p>
+          It is worth noting the sudden increases in the wildfire occurences for certain causes. For example, equipment use caused
+          a relatively consistent number of fires up until 2013, with roughly 1000-2000 occurences a year. However, in 2014,
+          the number of reported wildfires doubled, reaching 4472 occurences. We suspect that this is due to a classification
+          or reporting issue. Interestingly enough, the number of miscellaneous caused and undefined caused wildfires decreased.
+        </p>
+        <p>
+          To an extent, this graph is helpful in visualizing the volume of wildfire causes throughout the years and how certain causes
+          relate to one another.
+        </p>
+      </div>
       {% include 'streamgraph.html' %}
     </div>
   </section>
   <section class="wrapper">
     <div class="">
       <header class="special">
-        <h2>Leading question 3</h2>
-        <p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare
-          aliquet accumsan erat tempus amet porttitor.</p>
+        <h2>How is the cause, size, and location of a wildfire related (if at all)?</h2>
       </header>
+      <div class="inner">
+        <p>
+          From the first visualization, we are able to get a general sense of where wildfires are occuring and how big they are. With
+          the second visualization, we are able to get an aggregated view of which cause induces the most wildfires. Let's
+          use a Sankey chart to visualize relationships between cause, size, and location. The data used for this graph is
+          of all the years combined.
+        </p>
+        <p>
+          There are 6 fire size classes denoted by the letters "A" through "G", with "A" representing the smallest fire sizes (&lt;
+          0.25 acres), and "G" representing the largest fire sizes (5000+ acres). From this chart, you can see that the majority
+          of wildfires end up being small, in classes "A", "B", or "C". The remaining fire sizes are pretty rare - interestingly
+          enough, big fires (like class "F" and "G") are almost always human induced. Big accidents like powerline failures,
+          or malicious intent like arson tend to be the culprits. </p>
+        <p>There are also a significant amount of fires that were not able to be defined - these fires mostly ended up in the
+          small ("A" through "C") size classes. This sounds reasonable, as defining the cause of a fire can be somewhat arbitrary
+          when the main focus is to put the fire out.
+        </p>
+        <p>
+          From this chart, it is not easy to see patterns with regard to how the size of a fire relates to the location of the occurence.
+          However, it is interesting to see that many small fires occur in Georgia, California, and Texas - all of which
+          are generally dry and hot.
+        </p>
+      </div>
       {% include 'sankey.html' %}
     </div>
   </section>
@@ -62,10 +143,10 @@
     <div class="inner">
       <header class="special">
         <h2>Conclusion</h2>
-        <p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare
-          aliquet accumsan erat tempus amet porttitor.</p>
       </header>
+      <div>
 
+      </div>
     </div>
   </section>
 
