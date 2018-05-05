@@ -32,7 +32,7 @@ function chart(csvpath, color) {
         //   var color = d3.scaleLinear().domain([10, 100]).range(["brown", "steelblue"]);
         //   colorrange = color([1,10]); // "#9a3439"
     }
-    console.log(colorrange)
+    // console.log(colorrange)
     strokecolor = "#fff";
     // strokecolor = colorrange[0];
 
@@ -40,15 +40,15 @@ function chart(csvpath, color) {
     var format = d3.time.format("%m/%d/%y");
     // var format = d3.timeParse("%m/%d/%y"); this is v2
 
-
-    var margin = { top: 20, right: 50, bottom: 30, left: 50 };
-    var width = document.body.clientWidth - margin.left - margin.right;
+    var margin = { top: 20, right: 60, bottom: 30, left: 60 };
+    var width = document.body.clientWidth*0.72 - margin.left - margin.right;
+    // var width = document.body.clientWidth - margin.left - margin.right;
     var height = 500 - margin.top - margin.bottom;
 
-    var tooltip = d3.select("body")
+    var tooltip = d3.select(".chart")
         .append("div")
         .attr("class", "remove")
-        .style("position", "absolute")
+        .style("position", "relative")
         .style("z-index", "20")
         .style("visibility", "hidden")
         .style("top", "30px")
@@ -148,7 +148,7 @@ function chart(csvpath, color) {
             })
 
             .on("mousemove", function (d, i) {
-                console.log('MOUSE MOVE', d, i, this)
+                // console.log('MOUSE MOVE', d, i, this)
                 mousex = d3.mouse(this);
                 mousex = mousex[0];
                 var invertedx = x.invert(mousex);
@@ -160,7 +160,7 @@ function chart(csvpath, color) {
                     datearray[k] = datearray[k].getFullYear();
                     // datearray[k] = datearray[k].getMonth() + datearray[k].getDate();
                 }
-                console.log("HOVER", d, i);
+                // console.log("HOVER", d, i);
                 mousedate = datearray.indexOf(invertedx);
                 pro = d.values[mousedate].value;
 
@@ -170,7 +170,7 @@ function chart(csvpath, color) {
                     .attr("stroke-width", "1px"),
                     //   tooltip.html( "<p>" + d.key + "<br>" + pro + "</p>" ).style("visibility", "visible");
                     // https://stackoverflow.com/questions/24998682/d3-interactive-stream-graph-data-repeating-past-one-month
-                    tooltip.html("<p>" + d.key + "<br>" + pro + "</p>").style("visibility", "visible").style("left", mousex + "px");
+                    tooltip.html("<p>" + d.key + "<br>" + pro + " occurences</p>").style("visibility", "visible").style("left", mousex + "px");
             })
             .on("mouseout", function (d, i) {
                 svg.selectAll(".layer")
@@ -181,24 +181,33 @@ function chart(csvpath, color) {
                     .attr("stroke-width", "0.2px");
                 d3.select(this)
                     .classed("hover", false)
-                    .attr("stroke-width", "0px"), tooltip.html("<p>" + d.key + "<br>" + pro + "</p>").style("visibility", "visible");
+                    .attr("stroke-width", "0px"), tooltip.html("<p>" + d.key + "<br>" + pro + " occurenes</p>").style("visibility", "visible");
             })
 
         var vertical = d3.select(".chart")
             .append("div")
             .attr("class", "remove")
-            .style("position", "absolute")
+            .style("position", "relative")
             .style("z-index", "19")
             .style("width", "1px")
             .style("height", "480px")
-            .style("top", "400px")
-            .style("bottom", "30px")
-            .style("left", "0px")
+            .style("top", "-500px")
+            // .style("bottom", "200px")
+            .style("left",  "0px")
             .style("background", "#fff");
+
+        // var vertical = d3.select(".chart")
+        //         .append("hr")
+        //         .attr("class","remove")
+        //         .attr("width","1")
+        //         .attr("size",500)
+        //         .style("z-index", "19")
+        //         .style("background", "#fff");
 
         d3.select(".chart")
             .on("mousemove", function () {
                 mousex = d3.mouse(this);
+                console.log(mousex)
                 mousex = mousex[0] + 5;
                 vertical.style("left", mousex + "px")
             })
