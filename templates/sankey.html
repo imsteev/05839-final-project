@@ -24,7 +24,8 @@
 
 <div>
 
-  <p id="chart">
+  <p id="sankeyChart">
+
     <script>
       var units = "Widgets";
 
@@ -44,7 +45,7 @@
       console.log(color)
 
       // append the svg canvas to the page
-      var svg = d3.select("#chart").append("svg")
+      var svg = d3.select("#sankeyChart").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -62,7 +63,7 @@
 
       // load the data (using the timelyportfolio csv method)
       d3.csv("/static/data/sankey.csv", function (error, data) {
-        console.log(error)
+        console.log("SANKEY", error)
         //set up graph in same style as original example but empty
         graph = { "nodes": [], "links": [] };
 

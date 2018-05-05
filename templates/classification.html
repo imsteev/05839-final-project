@@ -74,7 +74,25 @@
     the confusion matrix to see where the predictions were true and false, all the predictions ended up in the "small" bucket.
     Again, we predict that this is due to heavy skewing due to the number of small fires.
   </p>
-  <p></p>
+  <div class='inner'>
+    <h2>Classifier Results from 1992 to 2015</h2>
+    <table class="alt">
+      <thead>
+        <tr>
+          <th>Fire Size Class</th>
+          <th>Range (in acres)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for size_class in ranges %}
+        <tr>
+          <td>{{ size_class }}</td>
+          <td>{{ ranges[size_class] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </section>
 <hr>
 <section>

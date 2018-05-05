@@ -148,6 +148,7 @@ function chart(csvpath, color) {
             })
 
             .on("mousemove", function (d, i) {
+                console.log('MOUSE MOVE', d, i, this)
                 mousex = d3.mouse(this);
                 mousex = mousex[0];
                 var invertedx = x.invert(mousex);
@@ -159,7 +160,7 @@ function chart(csvpath, color) {
                     datearray[k] = datearray[k].getFullYear();
                     // datearray[k] = datearray[k].getMonth() + datearray[k].getDate();
                 }
-
+                console.log("HOVER", d, i);
                 mousedate = datearray.indexOf(invertedx);
                 pro = d.values[mousedate].value;
 
